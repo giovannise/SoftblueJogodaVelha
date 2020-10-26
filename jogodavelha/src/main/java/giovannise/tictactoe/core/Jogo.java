@@ -1,6 +1,7 @@
 package giovannise.tictactoe.core;
 
 import giovannise.tictactoe.Constantes;
+import giovannise.tictactoe.UI.UI;
 
 public class Jogo {
 	
@@ -8,7 +9,8 @@ public class Jogo {
 	Jogador[] players = new Jogador[Constantes.SYMBOL_PLAYER.length];
 	
 	public void play() {
-		System.out.println("Jogando...");
+		UI.imprimeTituloDoJogo();
+		UI.lerTextoDigitado("Nome do Jogador:");
 	}
 
 }

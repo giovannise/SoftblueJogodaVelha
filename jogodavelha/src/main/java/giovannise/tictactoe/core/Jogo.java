@@ -1,6 +1,6 @@
 package giovannise.tictactoe.core;
 
-public class Game {
+public class Jogo {
 	
 	public void play() {
 		System.out.println("Jogando...");

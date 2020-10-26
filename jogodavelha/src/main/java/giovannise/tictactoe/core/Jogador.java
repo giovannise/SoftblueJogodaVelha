@@ -1,11 +1,19 @@
 package giovannise.tictactoe.core;
 
+import giovannise.tictactoe.UI.UI;
+
 public class Jogador {
 	
 	private String nome;
 	private Tabuleiro tabuleiro;
 	private char simbolo;
 	
+	public Jogador(String nome, Tabuleiro tabuleiro, char simbolo) {
+		this.nome = nome;
+		this.tabuleiro = tabuleiro;
+		this.simbolo = simbolo;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -18,12 +26,15 @@ public class Jogador {
 		return simbolo;
 	}
 
-	public Mover movimento() {
-		return null;
+	//alterado para private pq somente a própria classe jogador pode acessar 
+	private Mover movimento() {
+		String moveStr = UI.lerTextoDigitado("Jogador '" + nome + "' =>");
+		return new Mover(moveStr);
 	}
 	
 	public void play() {
-		
+		Mover movim = movimento();
+		tabuleiro.play(this, movim);
 	}
 
 }

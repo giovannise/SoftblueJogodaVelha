@@ -10,7 +10,10 @@ public class Jogo {
 	
 	public void play() {
 		UI.imprimeTituloDoJogo();
-		UI.lerTextoDigitado("Nome do Jogador:");
+		
+		board.imprimir();
+		
+		//UI.lerTextoDigitado("Nome do Jogador:");
 	}
 
 }

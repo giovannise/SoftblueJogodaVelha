@@ -11,9 +11,19 @@ public class Jogo {
 	public void play() {
 		UI.imprimeTituloDoJogo();
 		
-		board.imprimir();
+		for(int i = 0; i < players.length; i++) {
+			players[i] = criaJogador(i);
+		}
+	}
+	
+	private Jogador criaJogador(int indice) {
+		String name = UI.lerTextoDigitado("Jogador " + (indice + 1) + " =>");
+		char symbol = Constantes.SYMBOL_PLAYER[indice];
+		Jogador player = new Jogador(name, board, symbol);
 		
-		//UI.lerTextoDigitado("Nome do Jogador:");
+		UI.imprimeTexto("O jogador " + name + " vai usar o símbolo '" + symbol +"'");
+		
+		return player;
 	}
 
 }

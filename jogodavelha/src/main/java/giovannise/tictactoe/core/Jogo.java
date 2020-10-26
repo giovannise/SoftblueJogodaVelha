@@ -7,7 +7,7 @@ public class Jogo {
 	
 	private Tabuleiro board = new Tabuleiro();
 	private Jogador[] players = new Jogador[Constantes.SYMBOL_PLAYER.length];
-	private int jogadorAtual = 0;
+	private int indiceJogadorAtual = -1;
 	
 	public void play() {
 		UI.imprimeTituloDoJogo();
@@ -15,6 +15,35 @@ public class Jogo {
 		for(int i = 0; i < players.length; i++) {
 			players[i] = criaJogador(i);
 		}
+		
+		boolean terminou = false;
+		Jogador jogadorAtual = proximo();
+		Jogador vencedor = null;
+		
+		while(!terminou) {
+			board.imprimir();
+			
+			boolean sequenciaEncontrada = jogadorAtual.play();
+			
+			if(sequenciaEncontrada) {
+				terminou = true;
+				vencedor = jogadorAtual;
+			} else if (board.cheio()) {
+				terminou = true;
+				System.out.println("EMPATE");
+			}
+			
+			jogadorAtual = proximo();
+		}
+		
+		if (vencedor == null) {
+			UI.imprimeTexto("O jogo terminou empatado!");
+		} else {
+			UI.imprimeTexto("O jogador '" + vencedor.getNome() + "' venceu o jogo!");
+		}
+		
+		board.imprimir();
+		UI.imprimeTexto("---FIM DO JOGO---");
 	}
 	
 	private Jogador criaJogador(int indice) {
@@ -28,14 +57,14 @@ public class Jogo {
 	}
 	
 	private Jogador proximo() {
-		jogadorAtual++;
+		indiceJogadorAtual++;
 		
 		//quando chega no final da fila, recomeça a fila do 0
-		if(jogadorAtual >= players.length) {
-			jogadorAtual = 0;
+		if(indiceJogadorAtual >= players.length) {
+			indiceJogadorAtual = 0;
 		}
 		
-		return players[jogadorAtual];
+		return players[indiceJogadorAtual];
 		
 		/*
 		 * ---OUTRA OPÇÃO DE ABORDAGEM---

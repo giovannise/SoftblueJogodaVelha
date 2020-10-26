@@ -32,9 +32,9 @@ public class Jogador {
 		return new Mover(moveStr);
 	}
 	
-	public void play() {
+	public boolean play() {
 		Mover movim = movimento();
-		tabuleiro.play(this, movim);
+		return tabuleiro.play(this, movim);
 	}
 
 }

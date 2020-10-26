@@ -5,7 +5,7 @@ import giovannise.tictactoe.UI.UI;
 
 public class Tabuleiro {
 	
-	char[][] matriz;
+	private char[][] matriz;
 	
 	public Tabuleiro() {
 		matriz = new char[Constantes.BOARD_SIZE][Constantes.BOARD_SIZE];
@@ -58,10 +58,10 @@ public class Tabuleiro {
 	}
 	
 	public boolean play(Jogador player, Mover movimento) {
-		int i = movimento.i;
-		int j = movimento.j;
+		int i = movimento.getI();
+		int j = movimento.getJ();
 		
-		matriz[i][j] = player.simbolo;
+		matriz[i][j] = player.getSimbolo();
 		
 		//essa anotação abaixo serve como marcação para criar tasks para não esquecer.
 		//para visualizar = Window > Show View > Tasks

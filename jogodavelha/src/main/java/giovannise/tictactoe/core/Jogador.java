@@ -2,15 +2,27 @@ package giovannise.tictactoe.core;
 
 public class Jogador {
 	
-	String nome;
-	Tabuleiro tabuleiro;
-	char simbolo;
+	private String nome;
+	private Tabuleiro tabuleiro;
+	private char simbolo;
 	
-	Mover movimento() {
+	public String getNome() {
+		return nome;
+	}
+
+	public Tabuleiro getTabuleiro() {
+		return tabuleiro;
+	}
+
+	public char getSimbolo() {
+		return simbolo;
+	}
+
+	public Mover movimento() {
 		return null;
 	}
 	
-	void play() {
+	public void play() {
 		
 	}
 

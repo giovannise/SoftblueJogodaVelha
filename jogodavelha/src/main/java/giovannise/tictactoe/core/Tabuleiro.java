@@ -57,18 +57,24 @@ public class Tabuleiro {
 		return true;
 	}
 	
-	public boolean play(Jogador player, Mover movimento) {
+	public boolean play(Jogador player, Mover movimento) throws MovimentoInvalidoException {
 		int i = movimento.getI();
 		int j = movimento.getJ();
 		
-		//TODO validar os movimentos
+		if (i < 0 || j < 0 || i >= matriz.length || j >= matriz.length) {
+			throw new MovimentoInvalidoException("O intervalo da jogada é inválido");
+		}
+		
+		if (matriz[i][j] != ' ') {
+			throw new MovimentoInvalidoException("Este espaço já está preenchido");
+		}
 		
 		matriz[i][j] = player.getSimbolo();
 		
 		//essa anotação abaixo serve como marcação para criar tasks para não esquecer.
 		//para visualizar = Window > Show View > Tasks
 		//TODO checar se o jogador ganhou
-		//apagar após realizar a task, mas vou deixar aqui para fins de anotação.
+		//task finalizada, mas vou deixar aqui para fins de estudos posteriores.
 		
 		//retorna true se ganhou e false se ainda está jogando
 		//retorna true e um deles for true, somente retorna false se TODOS foram false

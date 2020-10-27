@@ -27,12 +27,12 @@ public class Jogador {
 	}
 
 	//alterado para private pq somente a própria classe jogador pode acessar 
-	private Mover movimento() {
+	private Mover movimento() throws MovimentoInvalidoException {
 		String moveStr = UI.lerTextoDigitado("Jogador '" + nome + "' =>");
 		return new Mover(moveStr);
 	}
 	
-	public boolean play() {
+	public boolean play() throws MovimentoInvalidoException {
 		Mover movim = movimento();
 		return tabuleiro.play(this, movim);
 	}

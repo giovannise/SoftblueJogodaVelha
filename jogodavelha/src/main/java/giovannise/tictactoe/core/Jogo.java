@@ -23,7 +23,14 @@ public class Jogo {
 		while(!terminou) {
 			board.imprimir();
 			
-			boolean sequenciaEncontrada = jogadorAtual.play();
+			boolean sequenciaEncontrada;
+			
+			try {
+				sequenciaEncontrada = jogadorAtual.play();
+			} catch (MovimentoInvalidoException e) {
+				UI.imprimeTexto("ERRO: " + e.getMessage());
+				continue;
+			}
 			
 			if(sequenciaEncontrada) {
 				terminou = true;

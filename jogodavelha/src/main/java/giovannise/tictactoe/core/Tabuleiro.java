@@ -111,7 +111,7 @@ public class Tabuleiro {
 	
 	private boolean checkColunaS(Jogador player) {
 		for(int j = 0; j < Constantes.BOARD_SIZE; j++) {
-			if(checkLinha(j, player)) {
+			if(checkColuna(j, player)) {
 				return true;
 			}
 		}
